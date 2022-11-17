@@ -7,3 +7,24 @@ info:
     name: "java-sat-recruitment"
     description: "This is a simple API to create users"
     version: 1.0
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create #solo para el ambiente de desa
+    show-sql: true
+    properties:
+      hibernate:
+        dialect : org.hibernate.dialect.H2Dialect
+
+ ###############################
+#  CONFIG H2 memoria
+###############################
+  datasource:
+    url: jdbc:h2:mem:testParamo
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true

@@ -1,7 +1,6 @@
-package sat.recruitment.api.controller;
+package sat.recruitment.api.user.controller;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -18,13 +17,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping(value = "/api/v1")
-public class SatRecruitmentController {
+public class SatRecruitmentController_deprecated {
 
-	private List<User> users = new ArrayList<User>();
+	private List<User_deprecated> users = new ArrayList<User_deprecated>();
 
 	@PostMapping(value = "/create-user", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void createUser(@RequestBody User messageBody) {
+	public void createUser(@RequestBody User_deprecated messageBody) {
 		String errors = "";
 
 		validateErrors(messageBody.getName(), messageBody.getEmail(), messageBody.getAddress(), messageBody.getPhone(),
@@ -34,7 +33,7 @@ public class SatRecruitmentController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, errors);
 		}
 
-		User newUser = new User();
+		User_deprecated newUser = new User_deprecated();
 		newUser.setName(messageBody.getName());
 		newUser.setEmail(messageBody.getEmail());
 		newUser.setAddress(messageBody.getAddress());
@@ -81,7 +80,7 @@ public class SatRecruitmentController {
 
 			while ((strLine = br.readLine()) != null) {
 				String[] line = strLine.split(",");
-				User user = new User();
+				User_deprecated user = new User_deprecated();
 				user.setName(line[0]);
 				user.setEmail(line[1]);
 				user.setPhone(line[2]);
@@ -98,7 +97,7 @@ public class SatRecruitmentController {
 		}
 
 		Boolean isDuplicated = false;
-		for (User user : users) {
+		for (User_deprecated user : users) {
 
 			if (user.getEmail().equals(newUser.getEmail()) || user.getPhone().equals(newUser.getPhone())) {
 				isDuplicated = true;

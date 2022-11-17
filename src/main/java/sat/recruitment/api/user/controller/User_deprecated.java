@@ -1,6 +1,6 @@
-package sat.recruitment.api.controller;
+package sat.recruitment.api.user.controller;
 
-public class User {
+public class User_deprecated {
 	public String name;
 	public String email;
 	public String address;
@@ -8,11 +8,11 @@ public class User {
 	public String userType;
 	public Double money;
 	
-	public User() {
+	public User_deprecated() {
 		
 	}
 
-	public User(String name, String email, String address, String phone, String userType, Double money) {
+	public User_deprecated(String name, String email, String address, String phone, String userType, Double money) {
 		super();
 		this.name = name;
 		this.email = email;

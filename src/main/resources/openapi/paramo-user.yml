@@ -1,0 +1,67 @@
+openapi: 3.0.0
+
+info:
+  version: "1.0.0"
+  title : PARAMO - APIs for USER
+
+components:
+  schemas:
+    UserType:
+      type: string
+      description: Este campo describe los tipos de usuarios que podemos crear
+      pattern: \W*(Normal|SuperUser|Premiun)\W*
+      default: 'Normal'
+
+    UserCreationRequest:
+      type: object
+      description: Objeto de request para la creacion de un user.
+      required:
+        - name
+        - email
+        - address
+        - phone
+      properties:
+        name:
+          type: string
+          description: nombre de usuario.
+        email:
+         type: string
+         description: email .
+        address:
+          type: string
+          description: direccion del usuario .
+          pattern: ^[A-Za-z0-9+_.-]+@(.+)$
+        phone:
+          type: string
+          description: telefono de usario.
+        userType:
+          $ref: '#/components/schemas/UserType'
+        money:
+          type: number
+          format: double
+          description: Importe del usuario
+
+paths:
+
+  /paramo/v1/user:
+    post:
+      summary: Crea un nuevo user
+      operationId: createUsers
+      tags:
+        - user
+      requestBody:
+        description: Crear User payload
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/UserCreationRequest"
+            example:
+              name: "miguel"
+              email: "pruebaMiguel@gmailc.om"
+              address: "0000003100007852995304"
+              phone: "30547981029"
+              userType: "Normal"
+              money: 13.4
+      responses:
+          "200":
+            description: Ok -Se creo correctamente el user.

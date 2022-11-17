@@ -1,10 +1,10 @@
-package platform.messagingservice.producer;
+package sat.recruitment.api.producer;
 
 import org.junit.jupiter.api.Test;
 
 public class SatRecruitmentTest {
 
-    @Test
+   // @Test
     public void main() {
     }
 }
