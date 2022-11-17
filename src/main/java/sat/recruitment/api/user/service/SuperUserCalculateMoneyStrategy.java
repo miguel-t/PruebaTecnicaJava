@@ -15,7 +15,6 @@ public class SuperUserCalculateMoneyStrategy extends CalculateMoneyStategyAbstra
     public Double calculateMoney(Double amount) {
 
         Double gif = Double.valueOf("0.00");
-
         if (amount > 100) {
             gif = amount * Double.valueOf("0.20");;
         }
