@@ -45,7 +45,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserCreationResponseDTO> getAllUsers() {
-        return userRepository.findAll().stream().map(UserCreationResponseDTO::toUserResponseDto).collect(Collectors.toList());
+        return userRepository.
+                findAll().
+                stream().
+                map(UserCreationResponseDTO::toUserResponseDto).collect(Collectors.toList());
     }
 
     private void validateUser(UserCreationRequest userCreationDto) {
