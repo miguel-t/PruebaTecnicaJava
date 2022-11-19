@@ -6,6 +6,34 @@ info:
 
 components:
   schemas:
+    UsePPType:
+      type: array
+      items:
+        $ref: "#/components/schemas/UserCreationResponseDTO"
+    UserCreationResponseDTO:
+      type: object
+      description: Usuarios que se dieron de alta .
+      properties:
+        name:
+          type: string
+          description: nombre de usuario.
+        email:
+          type: string
+          description: email .
+        address:
+          type: string
+          description: direccion del usuario .
+          pattern: ^[A-Za-z0-9+_.-]+@(.+)$
+        phone:
+          type: string
+          description: telefono de usario.
+        userType:
+          type: string
+          description: tipo de usuario.
+        money:
+          type: number
+          format: double
+          description: Importe del usuario
     UserType:
       type: string
       description: Este campo describe los tipos de usuarios que podemos crear
@@ -65,3 +93,16 @@ paths:
       responses:
           "200":
             description: Ok -Se creo correctamente el user.
+  /paramo/v1/users:
+    get:
+      summary: todos los usuarios creadoss
+      operationId: getAllUsers
+      tags:
+        - user
+      responses:
+        "200":
+          description: todos los usuarios creadoss
+          content:
+            "application/json":
+              schema:
+                $ref: '#/components/schemas/UsePPType'

@@ -11,7 +11,9 @@ import sat.recruitment.api.user.enums.CalculateStrategyNameEnum;
 import sat.recruitment.api.user.repository.UserRepository;
 import sat.recruitment.controller.model.UserCreationRequest;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -38,9 +40,13 @@ public class UserServiceImpl implements UserService {
         }
 
         User newUser = userRepository.save(this.toUser(userCreationDto));
-        return toUserResponseDto(newUser);
+        return UserCreationResponseDTO.toUserResponseDto(newUser);
     }
 
+    @Override
+    public List<UserCreationResponseDTO> getAllUsers() {
+        return userRepository.findAll().stream().map(UserCreationResponseDTO::toUserResponseDto).collect(Collectors.toList());
+    }
 
     private void validateUser(UserCreationRequest userCreationDto) {
         if(userRepository.existsByEmail(userCreationDto.getEmail())){
@@ -49,19 +55,6 @@ public class UserServiceImpl implements UserService {
         if(userRepository.existsByUserName(userCreationDto.getName())){
             throw new ApiServerException("The userName exists",HttpStatus.BAD_REQUEST);
         }
-    }
-
-    private UserCreationResponseDTO toUserResponseDto(User newUser) {
-        UserCreationResponseDTO newUserDto = new UserCreationResponseDTO();
-        newUserDto.setUserName(newUser.getUserName());
-        newUserDto.setEmail(newUser.getEmail());
-        newUserDto.setAddress(newUser.getAddress());
-        newUserDto.setPhone(newUser.getPhone());
-        newUserDto.setUserType(newUser.getUserType());
-        newUserDto.setMoney(newUser.getMoney());
-        newUserDto.setUserId(newUser.getUserId());
-        return newUserDto;
-
     }
 
     private User toUser(UserCreationRequest userCreationDto) {

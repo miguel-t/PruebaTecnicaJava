@@ -83,6 +83,11 @@
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <version>6.0.0</version>
+                <configuration>
+                    <importMappings>
+                        <importMapping>UserCreationResponseDTO= sat.recruitment.api.user.dto.UserCreationResponseDTO</importMapping>
+                    </importMappings>
+                </configuration>
                 <executions>
                     <execution>
                         <id>generate-paramo-server</id>
