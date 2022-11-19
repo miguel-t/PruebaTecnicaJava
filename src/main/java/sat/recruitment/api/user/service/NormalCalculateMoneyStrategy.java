@@ -1,6 +1,5 @@
 package sat.recruitment.api.user.service;
 
-import jdk.jfr.Percentage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import sat.recruitment.api.user.enums.CalculateStrategyNameEnum;

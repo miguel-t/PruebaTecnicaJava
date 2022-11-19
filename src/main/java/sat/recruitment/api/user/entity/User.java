@@ -30,7 +30,7 @@ public class User {
     private String userType;
 
     @Column(name="MONEY",nullable = true)
-    private Double money;
+    private double money;
 
 
 

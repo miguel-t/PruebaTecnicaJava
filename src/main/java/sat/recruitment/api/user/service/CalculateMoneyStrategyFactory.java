@@ -20,6 +20,10 @@ public class CalculateMoneyStrategyFactory {
 
 
     public CalculateMoneyStrategy findStrategy(CalculateStrategyNameEnum strategyName) {
+        if (strategyName == null){
+            return null;
+        }
+
         return strategies.get(strategyName);
     }
 
