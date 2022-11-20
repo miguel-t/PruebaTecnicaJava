@@ -63,3 +63,16 @@ curl --location --request GET 'http://localhost:8080/paramo/v1/users' \
 "userType": "SuperUser",
 "money": 100.1
 }'
+
+### Running the Application
+
+docker image :
+
+```
+docker build -t "java-prueba-tecnica" .
+```
+
+Run docker container :
+
+```
+docker run --name java-prueba-tecnica -p 8080:8080  java-prueba-tecnica:latest
